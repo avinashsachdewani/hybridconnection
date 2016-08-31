@@ -28,6 +28,17 @@ app.get('/', function (req, res) {
             console.log(err);
         }
     });
+    var result = "";
+    request.on('row', function (columns) {
+        columns.forEach(function (column) {
+            if (column.value === null) {
+                console.log('NULL');
+            } else {
+                result += column.value + " ";
+            }
+        });
+        console.log(result);
+    });
     res.send(request);
 });
 app.listen(app.get('port'), function () {
