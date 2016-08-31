@@ -23,7 +23,12 @@ var app = express();
 app.set('port', process.env.PORT || 3000);
 
 app.get('/', function (req, res) {
-    res.send("Hello World");
+    request = new Request("SELECT * FROM AspNetUsers", function (err) {
+        if (err) {
+            console.log(err);
+        }
+    });
+    res.send(request);
 });
 app.listen(app.get('port'), function () {
     console.log('Express server listening on port %d in %s mode', app.get('port'), app.get('env'));
