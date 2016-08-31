@@ -39,6 +39,7 @@ app.get('/', function (req, res) {
         });
         console.log(result);
     });
+    connection.execSql(request); 
     res.send(request);
 });
 app.listen(app.get('port'), function () {
